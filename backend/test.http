@@ -1,0 +1,159 @@
+### 1. Testar cadastro de clientes
+POST http://localhost:3000/cliente
+Content-Type: application/json
+
+{
+    "nome": "Carlos",
+    "email": "carlos@gmail.com",
+    "senha": "123",
+    "cpf": "22233344455",
+    "endereco": "Rua Teste, 0",
+    "telefone": "48999998888"
+}
+
+### 2. Testar cadastro de clientes
+POST http://localhost:3000/cliente
+Content-Type: application/json
+
+{
+    "nome": "Ana",
+    "email": "ana@gmail.com",
+    "senha": "123",
+    "cpf": "22233344455",
+    "endereco": "Av. Brasil, 456",
+    "telefone": "48988887777"
+}
+
+### 3.  Testar cadastro de clientes
+POST http://localhost:3000/cliente
+Content-Type: application/json
+
+{
+    "nome": "Roberto",
+    "email": "roberto@gmail.com",
+    "senha": "123",
+    "cpf": "98765432100",
+    "endereco": "Rua Central, 789",
+    "telefone": "48977776666"
+}
+
+### 4. Testar o login com o usuario carlos
+# @name loginReq
+POST  http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email": "carlos@gmail.com",
+    "senha": "123"
+}
+
+### 6. Testar a listagem de todos os Clientes
+GET http://localhost:3000/clientes
+Authorization: {{loginReq.response.body.token}}
+
+### 7. Testar a consulta de Clientes por nome
+GET http://localhost:3000/cliente/buscarNome/Ana
+Authorization: {{loginReq.response.body.token}}
+
+### 8. Testar a consulta de clientes por id
+GET http://localhost:3000/cliente/3
+Authorization: {{loginReq.response.body.token}}
+
+### 9. Testar a atualização de clientes
+PUT http://localhost:3000/cliente/3
+Content-Type: application/json 
+Authorization: {{loginReq.response.body.token}}
+
+{
+    "nome": "RobertoUpd",
+    "email": "robertoUpd@gmail.com",
+    "endereco": "Rua Central, 789",
+    "telefone": "48977776666"
+}
+
+
+### 10. Testar a exclusão de clientes
+DELETE http://localhost:3000/cliente/4
+Authorization: {{loginReq.response.body.token}}
+
+### 11. Testar o cadastro de Veiculos
+POST http://localhost:3000/veiculo
+Content-Type: application/json
+Authorization: {{loginReq.response.body.token}}
+
+{
+    "modelo": "Dolphin mini",
+    "marca": "Byd",
+    "placa": "Xyz0B14",
+    "codRastreio": "111",
+    "idCliente": 1
+}
+
+### 12. Testar o cadastro de Veiculos
+POST http://localhost:3000/veiculo
+Content-Type: application/json
+Authorization: {{loginReq.response.body.token}}
+
+{
+    "modelo": "Tesla model Y",
+    "marca": "Tesla",
+    "placa": "Xjs0A15",
+    "codRastreio": "112",
+    "idCliente": 2
+}
+
+### 13. Testar o cadastro de Veiculos
+POST http://localhost:3000/veiculo
+Content-Type: application/json
+Authorization: {{loginReq.response.body.token}}
+
+{
+    "modelo": "Honda Civic",
+    "marca": "Honda",
+    "placa": "Llm0P25",
+    "codRastreio": "113",
+    "idCliente": 3
+}
+
+### 14. Testar o cadastro de Agendamentos
+POST http://localhost:3000/agendamento
+Content-Type: application/json
+Authorization: {{loginReq.response.body.token}}
+
+{
+    "data": "2026-10-20",
+    "hora": "08:10",
+    "tipoServico": "revisao",
+    "idCliente": 1,
+    "idVeiculo": 1
+}
+
+### 15. Testar o cadastro de Agendamentos
+POST http://localhost:3000/agendamento
+Content-Type: application/json
+Authorization: {{loginReq.response.body.token}}
+
+{
+    "data": "2026-10-20",
+    "hora": "08:20",
+    "tipoServico": "manutençao",
+    "idCliente": 3,
+    "idVeiculo": 3
+}
+
+### 16. Testar o cadastro de Agendamentos
+POST http://localhost:3000/agendamento
+Content-Type: application/json
+Authorization: {{loginReq.response.body.token}}
+
+{
+    "data": "2026-10-20",
+    "hora": "08:50",
+    "tipoServico": "instalaçao",
+    "idCliente": 3,
+    "idVeiculo": 3
+}
+
+### 17. Testar a listagem de Agendamentos
+GET  http://localhost:3000/agendamentos
+Authorization: {{loginReq.response.body.token}}
